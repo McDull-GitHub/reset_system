@@ -159,7 +159,7 @@ function Start() {
   echo "  3) Ubuntu 16.04"
   echo "  4) Ubuntu 18.04"
   echo "  5) Custom image"
-  echo "  6) Exit"
+  echo "  0) Exit"
   echo -ne "\nYour option: "
   read N
   case $N in
@@ -177,7 +177,7 @@ function Start() {
         *) clear; echo "Canceled by user!"; exit 1;;
       esac
       ;;
-    6) exit 0;;
+    0) exit 0;;
     *) echo "Wrong input!"; exit 1;;
   esac
 }
