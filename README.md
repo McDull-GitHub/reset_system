@@ -1,6 +1,6 @@
 # 重新安裝Linux系統
 
-例如想安裝 Ubuntu 18.04 64-bit，並改root密碼為password2020使用
+自動安裝 Ubuntu 或者 Debian系統，並改root密碼為password
 
 `bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/McDull-GitHub/reset_system/master/reset.sh')`
 
