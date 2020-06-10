@@ -144,13 +144,9 @@ function Start() {
   fi
   wget --no-check-certificate -qO /tmp/InstallNET.sh 'https://raw.githubusercontent.com/McDull-GitHub/reset_system/master/install.sh' && chmod a+x /tmp/InstallNET.sh
   
-  CMIRROR=''
-  CVMIRROR=''
   DMIRROR=''
   UMIRROR=''
   if [[ "$isCN" == '1' ]];then
-    CMIRROR="--mirror http://mirrors.aliyun.com/centos/"
-    CVMIRROR="--mirror http://mirrors.tuna.tsinghua.edu.cn/centos-vault/"
     DMIRROR="--mirror http://mirrors.aliyun.com/debian/"
     UMIRROR="--mirror http://mirrors.aliyun.com/ubuntu/"
   fi
@@ -158,26 +154,20 @@ function Start() {
   sed -i '/force-efi-extra-removable/d' /tmp/InstallNET.sh
 
   echo -e "\nPlease select an OS:"
-  echo "  1) CentOS 7.7 (DD Image)"
-  echo "  2) CentOS 7.6 (ServerSpeeder Avaliable)"
-  echo "  3) CentOS 6"
-  echo "  4) Debian 9"
-  echo "  5) Debian 10"
-  echo "  6) Ubuntu 16.04"
-  echo "  7) Ubuntu 18.04"
-  echo "  8) Custom image"
-  echo "  0) Exit"
+  echo "  1) Debian 9"
+  echo "  2) Debian 10"
+  echo "  3) Ubuntu 16.04"
+  echo "  4) Ubuntu 18.04"
+  echo "  5) Custom image"
+  echo "  6) Exit"
   echo -ne "\nYour option: "
   read N
   case $N in
-    1) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh $NETSTR -dd 'https://api.moetools.net/get/centos-7-image' $DMIRROR ;;
-    2) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh $NETSTR -dd 'https://api.moetools.net/get/centos-76-image' $DMIRROR ;;
-    3) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -c 6.10 -v 64 -a $NETSTR $CMIRROR ;;
-    4) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -d 9 -v 64 -a $NETSTR $DMIRROR ;;
-    5) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -d 10 -v 64 -a $NETSTR $DMIRROR ;;
-    6) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -u 16.04 -v 64 -a $NETSTR $UMIRROR ;;
-    7) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -u 18.04 -v 64 -a $NETSTR $UMIRROR ;;
-    8)
+    1) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -d 9 -v 64 -a $NETSTR $DMIRROR ;;
+    2) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -d 10 -v 64 -a $NETSTR $DMIRROR ;;
+    3) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -u 16.04 -v 64 -a $NETSTR $UMIRROR ;;
+    4) echo -e "\nPassword: password\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/InstallNET.sh -u 18.04 -v 64 -a $NETSTR $UMIRROR ;;
+    5)
       echo -e "\n"
       read -r -p "Custom image URL: " imgURL
       echo -e "\n"
@@ -187,7 +177,7 @@ function Start() {
         *) clear; echo "Canceled by user!"; exit 1;;
       esac
       ;;
-    0) exit 0;;
+    6) exit 0;;
     *) echo "Wrong input!"; exit 1;;
   esac
 }
