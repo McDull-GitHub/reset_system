@@ -173,7 +173,7 @@ function Start() {
       echo -e "\n"
       read -r -p "Are you ready to reinstall? [Y/n]: " input
       case $input in
-        [yY][eE][sS]|[yY]) bash /tmp/InstallNET.sh $NETSTR -dd $imgURL $DMIRROR ;;
+        [yY][eE][sS]|[yY]) bash /tmp/InstallNET.sh $NETSTR -dd $imgURL ;;
         *) clear; echo "Canceled by user!"; exit 1;;
       esac
       ;;
